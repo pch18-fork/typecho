@@ -21,12 +21,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 				</div>
                    <a itemprop="url" href="<?php $this->permalink() ?>">
                     <?php showThumbnail($this); ?>
-	            <div class="post-content" itemprop="articleBody">
-		       <p><?php $this->excerpt(130); ?></p>
-                    </div>
+	            	<div class="post-content" itemprop="articleBody">
+		       			<p style="margin:0"><?php $this->excerpt(130); ?></p>
+                	</div>
+                     <div style="clear:both"></div>
                    </a>
 			</div>
-            <div class="info">
+            <div class="info" style="margin-top:10px">
             	<ul class="post-meta">
                   <li><i class="fa fa-book fa-fw" aria-hidden="true">&nbsp; </i><?php $this->category(','); ?></li>
 		  <li><i class="fa fa-calendar" aria-hidden="true">&nbsp; </i><time class="lately-a" datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date(); ?></time></li>

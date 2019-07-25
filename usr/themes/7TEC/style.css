@@ -423,7 +423,7 @@ p.more a{
     background-color: #fff;
 }
 h1.post-title{font-size:24px;}
-h2.post-title,.post-content h2{font-size:20px;}
+h2.post-title{font-size:20px;}
 h2.post-title span{
     color: #1abc9c;
     font-style: italic;
@@ -444,7 +444,7 @@ float: left;
 width: 200px;
 max-height: 150px;
 overflow: hidden;
-margin: 0 20px 10px 0;
+margin: 0 20px 0 0;
 border-radius: 5px;
 }
 /*缩略图样式END*/
