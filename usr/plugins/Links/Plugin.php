@@ -115,7 +115,7 @@ class Links_Plugin implements Typecho_Plugin_Interface
 			if(('Mysql' == $type && 1050 == $code) ||
 					('SQLite' == $type && ('HY000' == $code || 1 == $code))) {
 				try {
-					$script = 'SELECT `lid`, `name`, `url`, `sort`, `image`, `description`, `user`, `order` from `' . $prefix . 'links`';
+					$script = 'SELECT `lid`, `name`, `url`, `sort`, `description`, `order` from `' . $prefix . 'links`';
 					$installDb->query($script, Typecho_Db::READ);
 					return '检测到友情链接数据表，友情链接插件启用成功';					
 				} catch (Typecho_Db_Exception $e) {
@@ -174,18 +174,22 @@ class Links_Plugin implements Typecho_Plugin_Interface
 		$sort = new Typecho_Widget_Helper_Form_Element_Text('sort', NULL, NULL, _t('链接分类'), _t('建议以英文字母开头，只包含字母与数字'));
 		$form->addInput($sort);
 		
-		/** 链接图片 */
-		$image = new Typecho_Widget_Helper_Form_Element_Text('image', NULL, NULL, _t('链接图片'),  _t('需要以http://开头，留空表示没有链接图片'));
-		$form->addInput($image);
+		// /** 链接图片 */
+		// $image = new Typecho_Widget_Helper_Form_Element_Text('image', NULL, NULL, _t('链接图片'),  _t('需要以http://开头，留空表示没有链接图片'));
+		// $form->addInput($image);
 		
 		/** 链接描述 */
 		$description =  new Typecho_Widget_Helper_Form_Element_Textarea('description', NULL, NULL, _t('链接描述'));
 		$form->addInput($description);
 		
-		/** 自定义数据 */
-		$user = new Typecho_Widget_Helper_Form_Element_Text('user', NULL, NULL, _t('自定义数据'), _t('该项用于用户自定义数据扩展'));
-		$form->addInput($user);
-		
+		// /** 自定义数据 */
+		// $user = new Typecho_Widget_Helper_Form_Element_Text('user', NULL, NULL, _t('自定义数据'), _t('该项用于用户自定义数据扩展'));
+		// $form->addInput($user);
+
+		/** 排序 */
+		$order = new Typecho_Widget_Helper_Form_Element_Text('order', NULL, NULL, _t('排序'), _t('该项用于列表排序'));
+		$form->addInput($order);
+
 		/** 链接动作 */
 		$do = new Typecho_Widget_Helper_Form_Element_Hidden('do');
 		$form->addInput($do);
@@ -212,9 +216,10 @@ class Links_Plugin implements Typecho_Plugin_Interface
             $name->value($link['name']);
             $url->value($link['url']);
             $sort->value($link['sort']);
-            $image->value($link['image']);
+            // $image->value($link['image']);
             $description->value($link['description']);
-            $user->value($link['user']);
+            // $user->value($link['user']);
+            $order->value($link['order']);
             $do->value('update');
             $lid->value($link['lid']);
             $submit->value(_t('编辑链接'));
@@ -234,7 +239,7 @@ class Links_Plugin implements Typecho_Plugin_Interface
 			$name->addRule('required', _t('必须填写链接名称'));
 			$url->addRule('required', _t('必须填写链接地址'));
 			$url->addRule('url', _t('不是一个合法的链接地址'));
-			$image->addRule('url', _t('不是一个合法的图片地址'));
+			// $image->addRule('url', _t('不是一个合法的图片地址'));
         }
         if ('update' == $action) {
             $lid->addRule('required', _t('链接主键不存在'));
@@ -260,13 +265,9 @@ class Links_Plugin implements Typecho_Plugin_Interface
 		if (!isset($options->plugins['activated']['Links'])) {
 			return '友情链接插件未激活';
 		}
-		if (!isset($pattern) || $pattern == "" || $pattern == NULL || $pattern == "SHOW_TEXT") {
+		if (!isset($pattern) || $pattern == "" || $pattern == NULL) {
 			$pattern = "<li><a href=\"{url}\" title=\"{title}\" target=\"_blank\">{name}</a></li>\n";
-		} else if ($pattern == "SHOW_IMG") {
-			$pattern = "<li><a href=\"{url}\" title=\"{title}\" target=\"_blank\"><img src=\"{image}\" alt=\"{name}\" /></a></li>\n";
-		} else if ($pattern == "SHOW_MIX") {
-			$pattern = "<li><a href=\"{url}\" title=\"{title}\" target=\"_blank\"><img src=\"{image}\" alt=\"{name}\" /><span>{name}</span></a></li>\n";
-		}
+		} 
 		$db = Typecho_Db::get();
 		$prefix = $db->getPrefix();
 		$options = Typecho_Widget::widget('Widget_Options');
@@ -286,12 +287,9 @@ class Links_Plugin implements Typecho_Plugin_Interface
 		$links = $db->fetchAll($sql);
 		$str = "";
 		foreach ($links as $link) {
-			if ($link['image'] == NULL) {
-				$link['image'] = $nopic_url;
-			}
 			$str .= str_replace(
-				array('{lid}', '{name}', '{url}', '{sort}', '{title}', '{description}', '{image}', '{user}'),
-				array($link['lid'], $link['name'], $link['url'], $link['sort'], $link['description'], $link['description'], $link['image'], $link['user']),
+				array('{lid}', '{name}', '{url}', '{sort}', '{title}', '{description}', '{order}'),
+				array($link['lid'], $link['name'], $link['url'], $link['sort'], $link['description'], $link['description'], $link['order']),
 				$pattern
 			);
 		}

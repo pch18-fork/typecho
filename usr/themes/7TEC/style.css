@@ -60,7 +60,7 @@ p{color:#565656;}
     color: #199475;
 }
 .navbar-collapse{text-align:right;padding:.25rem .75rem;}
-.navbar-nav .nav-item a.nav-link{color:#555;}
+.navbar-nav .nav-item a.nav-link{color:#555;text-align: center;}
 .navbar-nav .nav-item a.nav-link:hover{color:#1abc9c;}
 .kit-hidden1{display:none;}
 .site-search input{
@@ -128,15 +128,15 @@ p{color:#565656;}
   }
 }
 /*end scale-in-ver-top*/
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .post-thumb{width:100%!important;}
-    .kit-hidden1{display:inline-block;}
+    .kit-hidden1{display:none;}
     .kit-hidden2{display:none;}
     .site-search input{width:80%;margin:0px}
     .form-inline{width:150px;}
     .indexCard p{font-size:12px}
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .hidden-md{
         display:none;
     }
@@ -707,7 +707,7 @@ span.views{
 /*返回顶部 START*/
 .GoTop{
     position:fixed;
-    bottom: 50px;
+    bottom: 65px;
     right: 20px;
     width: 27px;
     height: 50px;

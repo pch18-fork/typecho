@@ -50,7 +50,7 @@ include 'menu.php';
 									<th><?php _e('链接名称'); ?></th>
 									<th><?php _e('链接地址'); ?></th>
 									<th><?php _e('分类'); ?></th>
-									<th><?php _e('图片'); ?></th>
+									<th><?php _e('排序'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,15 +61,8 @@ include 'menu.php';
 									<td><a href="<?php echo $request->makeUriByRequest('lid=' . $link['lid']); ?>" title="点击编辑"><?php echo $link['name']; ?></a>
 									<td><?php echo $link['url']; ?></td>
 									<td><?php echo $link['sort']; ?></td>
-									<td><?php
-										if ($link['image']) {
-											echo '<a href="'.$link['image'].'" title="点击放大" target="_blank"><img class="avatar" src="'.$link['image'].'" alt="'.$link['name'].'" width="32" height="32"/></a>';
-										} else {
-											$options = Typecho_Widget::widget('Widget_Options');
-											$nopic_url = Typecho_Common::url('/usr/plugins/Links/nopic.jpg', $options->siteUrl);
-											echo '<img class="avatar" src="'.$nopic_url.'" alt="NOPIC" width="32" height="32"/>';
-										}
-									?></td>
+									<td><?php echo $link['order']; ?></td>
+									
                                 </tr>
                                 <?php endforeach; ?>
                                 <?php else: ?>

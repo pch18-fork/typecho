@@ -53,11 +53,31 @@
         </ul>
     </section>
     <?php endif; ?>
+  
+    <?php if(class_exists('Links_Plugin') && isset($this->options->plugins['activated']['Links'])): ?>
+	<section class="widget paddingall">
+		<h5 class="widget-title">
+          <?php _e('友情链接'); ?>
+          <a href="<?php $this->options->siteUrl('/archives/apply_link.html'); ?>" style="float:right">申请</a>
+      </h5>
+        <ul class="widget-list">
+        	<?php Links_Plugin::output(); ?>
+        </ul>
+	</section>
+    <?php endif; ?>
+  
+  
+  
     <?php if (!empty($this->options->sidebarBlock) && in_array('ShowOther', $this->options->sidebarBlock)): ?>
 	<section class="widget paddingall">
 		<h5 class="widget-title"><?php _e('其它'); ?></h5>
         <ul class="widget-list">
             <?php if($this->user->hasLogin()): ?>
+            	<?php if($this->_archiveType == 'post'): ?>
+                <li><a href="<?php $this->options->siteUrl('/admin/write-post.php?cid='.$this->cid); ?>"><?php _e('编辑此篇文章'); ?></a></li>
+          		<?php elseif($this->_archiveType == 'page'): ?>
+                <li><a href="<?php $this->options->siteUrl('/admin/write-page.php?cid='.$this->cid); ?>"><?php _e('编辑此篇独立页面'); ?></a></li>
+          		<?php endif; ?>
 				<li class="last"><a href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
                 <li><a href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
             <?php else: ?>

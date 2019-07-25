@@ -127,11 +127,11 @@ $(document).ready(function(){
 
 	$('.GoTop').click(function(){
 		var _this = this;
-		if($(window).scrollTop() > 100){
+		if($(window).scrollTop() > 0){
 			$(window).scrollTop(0);
 			$('html,body').animate({scrollTop:0},800,function(){
 				$(_this).css('bottom','-30px');
-				$(_this).animate({bottom:'50px'},800);
+				$(_this).animate({bottom:'65px'},800);
 			});
 			$(_this).animate({bottom:'700px'},700);
 		}
