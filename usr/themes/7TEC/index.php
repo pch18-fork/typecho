@@ -21,7 +21,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 				</div>
                    <a itemprop="url" href="<?php $this->permalink() ?>">
                     <?php showThumbnail($this); ?>
-	            	<div class="post-content" itemprop="articleBody">
+	            	<div class="post-content" itemprop="articleBody" style="display:table;">
 		       			<p style="margin:0"><?php $this->excerpt(130); ?></p>
                 	</div>
                      <div style="clear:both"></div>

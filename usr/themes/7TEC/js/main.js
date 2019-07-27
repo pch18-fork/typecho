@@ -176,7 +176,7 @@ $(document).ready(function(){
 		},
 	});
 	//浮动副标题
-	$.fn.SubtitleBox = function (contnet,comment = null) {
+	$.fn.SubtitleBox = function (contnet,comment) {
 		var _this = this;
 		var parentHeight = $(this).parent().height() - $(this).height();
 		var allTitleNode = contnet.children('h5,h4,h3,h2,h1');
@@ -282,7 +282,7 @@ $(document).ready(function(){
 				{facereg:"(!)[zface_16.png]",faceName:"[U+1F611]",facePath:"zface_16.png"},
 				{facereg:"(!)[zface_17.png]",faceName:"[U+1F923]",facePath:"zface_17.png"},
 			],
-			Init:function(options = null){
+			Init:function(options){
 				var defaults = {
 					textinput:'.comment-textarea', 
 					imgbox:'.emoji-box',
@@ -366,6 +366,11 @@ ZanShang.prototype._init = function(){
       that.zsFooter.hide();
 
     })
+  })
+  $('#pay-text').on('click', function () {
+	that.zsPay.hide();
+	that.zsBtns.show();
+	that.zsFooter.show();
   })
 }
 var zs = new ZanShang();

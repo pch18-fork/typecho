@@ -36,7 +36,11 @@
 	<?php if($this->options->Analytics): ?>
 	<?php $this->options->Analytics(); ?>
 	<?php endif; ?>
-  
+  	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/prism.css');?>"> 
+  	<link rel="stylesheet" href="<?php $this->options->themeUrl('css/prism_add.css');?>"> 
+    <script src="<?php $this->options->themeUrl('js/prism_add.js');?>"></script>
+    <script src="<?php $this->options->themeUrl('js/prism.js');?>"></script>
+
 </footer><!-- end #footer -->
 
 </body>

@@ -226,7 +226,7 @@ class boxrw extends Typecho_Widget_Helper_PageNavigator_Box
      * @param string  $after  后字串
      * @return string
      */
-  function theMostViewed($limit = 10, $before = '(', $after = '人看过 ) ')
+  function theMostViewed($limit = 10, $before = '(', $after = '人看过) ')
     {
         $db = Typecho_Db::get();
         $options = Typecho_Widget::widget('Widget_Options');
@@ -243,7 +243,7 @@ class boxrw extends Typecho_Widget_Helper_PageNavigator_Box
                 $post_views = number_format($result['views']);
                 $post_title = htmlspecialchars($result['title']);
                 $permalink = $result['permalink'];
-                echo "<li><a href='$permalink' title='$post_title'>$post_title</a><span class='views'>$before $post_views $after</span></li>\n";
+                echo "<li><a href='$permalink' title='$post_title'>$post_title</a><span class='views'> {$before}{$post_views}{$after}</span></li>\n";
             }
 
         } else {

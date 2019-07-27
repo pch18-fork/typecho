@@ -1,0 +1,12 @@
+.post-content pre {
+    background: #fafafa;
+  	max-height: 400px;
+}
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+    background: none;
+}
+
+.code-toolbar {
+    font-size: 87.5%;
+}

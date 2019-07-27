@@ -5,7 +5,10 @@ a:hover {
     cursor: url(/usr/themes/7TEC/img/pointer.cur), auto;
 }
 
-
+/*分类缩进*/
+.widget-list li:not(.parent-0){
+  padding-left:20px;
+}
 
 a{
     color: #555;
@@ -16,6 +19,7 @@ a:focus,a:hover {
 }
 p{color:#565656;}
 .post-content p[img]{text-align:center;}
+.post-content a{color: #009688;}
 .clear{clear:both;}
 .body{padding-top:80px;background-color:#f6f6f6 !important;}
 /*导航样式 Start*/
@@ -286,7 +290,7 @@ p.more a{
     color: #1ecd97;
 }
 .comment-form{
-    border-top: 1px solid #c3bdbd3b;
+   /* border-top: 1px solid #c3bdbd3b; */
 
 }
 .comment-form input{
@@ -331,7 +335,7 @@ p.more a{
 }
 .comment-form-fields .col{
     padding: 0px;
-    border-left: 1px solid #c3bdbd3b;
+   /* border-left: 1px solid #c3bdbd3b; */
 }
 .comment-form-fields .col span{
     border-radius: 0%;
@@ -719,6 +723,7 @@ span.views{
 }
 /*返回顶部 END*/
 /*赞赏样式*/
+.entry-shang{padding-top:20px;}
 .entry-shang p{font-size:12px;}
 .zs-modal-bg {
     position: fixed;

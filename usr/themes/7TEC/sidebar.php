@@ -29,7 +29,7 @@
 		<h5 class="widget-title"><?php _e('文章分类'); ?></h5>
         <?php //$this->widget('Widget_Metas_Category_List')->listCategories('wrapClass=widget-list');
         _e('<ul class="widget-list">');
-        $this->widget('Widget_Metas_Category_List')->parse('<li><a href="{permalink}"><i class="fa fa-book fa-lg" aria-hidden="true">&nbsp; </i>{name}</a></li>'); 
+        $this->widget('Widget_Metas_Category_List')->parse('<li class="parent-{parent}"><a href="{permalink}"><i class="fa fa-book fa-lg" aria-hidden="true">&nbsp; </i>{name}</a> <span class="views">({count}篇文章)</span></li>'); 
         _e('</ul>');
         ?>
 	</section>
