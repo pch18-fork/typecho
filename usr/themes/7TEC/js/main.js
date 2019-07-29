@@ -1,3 +1,22 @@
+//锚点偏移
+$(document).ready(function(){
+    $(window).bind('hashchange',function(){
+        var target = $(location.hash);
+        if(target.length==1){
+             var top = target.offset().top-62;
+             if(top > 0){
+                 $('html,body').animate({scrollTop:top}, 800);
+             }
+         } 
+    });
+    $(document).on("click", "a", function(){
+        if($(this).attr('href')==location.href){
+            $(window).trigger('hashchange');
+        }
+    })
+    $(window).trigger('hashchange');
+})
+
 function readyrun(){
 	//emoji表情
 	$(".emoji-btn").click(function () {
@@ -120,7 +139,7 @@ $(document).ready(function(){
         });
   
 	if(typeof respondId !== 'undefined'){
-		$(".SubtitleBox").SubtitleBox($('.post-content'),$('#respond-textarea'));
+		$(".SubtitleBox").SubtitleBox($('.post-content'),$('#comments'));
 	}
 	$.emoji.Init();
 	$(".floatblock").FloatBlock('.sidebar');
@@ -169,7 +188,7 @@ $(document).ready(function(){
 			if(typeof topval === 'number'){
 				var nowscrolltop = $(window).scrollTop();//现在滚动条位置
 				if(topval > nowscrolltop){ //往下滑动就添加导航偏移
-					topval += $('.header').height();
+				//	topval += $('.header').height();
 				}
 				$('html,body').animate({scrollTop:topval},800);
 			}
@@ -187,7 +206,7 @@ $(document).ready(function(){
 			});
 		}
 		if($(comment).length > 0){
-			$(_this).html($(_this).html() + '<p><a href="#" onclick="$.TitleLocation('+$(comment).offset().top+');" ><i class="fa fa-commenting" >&nbsp;</i>评论一下</a></p>');
+			$(_this).html($(_this).html() + '<p><a href="#" onclick="$.TitleLocation('+($(comment).offset().top-62)+');" ><i class="fa fa-commenting" >&nbsp;</i>评论一下</a></p>');
 		}
 		if($(comment).length > 0 || allTitleNode.length > 0 ){
 			$(_this).css('visibility','visible');

@@ -18,7 +18,7 @@
                 <h4 class="post-title" itemprop="name headline"><a itemprop="url" href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h4>
                 </div>
                 <?php showThumbnail($this); ?>
-                <div class="post-content" itemprop="articleBody">
+                <div class="post-content" itemprop="articleBody" style="display:table;">
                     <?php /// $this->content('阅读全文'); ?>
                     <p><?php $this->excerpt(130); ?></p>
                 </div>
