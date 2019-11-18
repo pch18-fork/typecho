@@ -370,6 +370,7 @@ p.more a{
     width: 100%;
     margin-top: 7px;
     word-wrap: break-word;
+  	word-break: break-all;
     overflow: hidden;
 }
 
@@ -377,9 +378,9 @@ p.more a{
 	color:#1abc9c;
 }
 .pl-text p{
-	padding:0px; 
+	padding: 4px 0; 
 	margin:0px;
-	display: inline;
+ /*	display: inline; */
 	color: #313131;
 }
 .date-dz{
@@ -388,6 +389,7 @@ p.more a{
 .comment-row{
 	margin-right: 0px;
     margin-left: 0px;
+ /* flex-wrap: nowrap; */
 }
 .comment-col{
 	padding-right:10px;

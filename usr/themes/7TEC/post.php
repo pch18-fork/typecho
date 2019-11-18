@@ -61,7 +61,7 @@
 			<!---赞赏模块---->
 		</div>
 		<div class="tags-box paddingall">
-			版权声明：如无特别说明，本文为作者原创，如需转载须联系作者本人同意，未经作者本人同意不得擅自转载。
+			版权声明：如无特别说明，本文为作者原创，转载请在首行注明来源：<a href="<?php $this->permalink(); ?>"><?php $this->permalink(); ?></a>
 		</div>
 		<div class="info">
 			<ul class="post-meta">
